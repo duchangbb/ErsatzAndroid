@@ -192,8 +192,7 @@ public class MainHook implements IXposedHookLoadPackage {
         }
         List<Rule> rules = null;
         try {
-            // 直接读模块自己 data 目录下的 SharedPreferences 文件
-            Context ctx = android.app.ActivityThread.currentApplication();
+            Context ctx = resolveHostContext();
             if (ctx != null) {
                 rules = new RuleStore(ctx).loadRules();
             }
@@ -203,4 +202,25 @@ public class MainHook implements IXposedHookLoadPackage {
         cachedTime = now;
         return rules;
     }
+
+    /**
+     * 获取宿主的 Context。
+     * 注意：android.app.ActivityThread 属于隐藏 API，编译期不可直接引用，
+     * 这里用反射调用，避免 compileSdk 34 下的 cannot find symbol。
+     */
+    private static Context resolveHostContext() {
+        Context ctx = sAppContext;
+        if (ctx != null) return ctx;
+        try {
+            Class<?> at = Class.forName("android.app.ActivityThread");
+            Object app = at.getMethod("currentApplication").invoke(null);
+            if (app instanceof Context) {
+                ctx = (Context) app;
+            }
+        } catch (Throwable ignored) {}
+        return ctx;
+    }
+
+    /** 由 ApplicationInfo.loadLabel 等 hook 过程中顺带缓存，避免重复反射。 */
+    private static volatile Context sAppContext;
 }

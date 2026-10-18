@@ -66,6 +66,9 @@ public class MainActivity extends Activity {
         root.addView(addBtn);
 
         setContentView(root);
+
+        // 首次进入时把已保存的规则填进列表
+        refreshList();
     }
 
     private void refreshList() {
