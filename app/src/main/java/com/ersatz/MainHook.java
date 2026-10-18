@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import java.util.List;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
+import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
@@ -22,7 +23,18 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
  *   - Hook PackageManager 的 label <-> SBApplication displayName
  * 在 setText 之前把文本替换掉，实现全局文本替换。
  */
-public class MainHook implements IXposedHookLoadPackage {
+public class MainHook implements IXposedHookLoadPackage, IXposedHookZygoteInit {
+
+    /** 模块类被加载时立刻打日志，用于确认 LSPosed 是否真的加载了本模块。 */
+    static {
+        XposedBridge.log("[Ersatz] ===== MainHook class loaded =====");
+    }
+
+    @Override
+    public void initZygote(IXposedHookZygoteInit.StartupParam startupParam) throws Throwable {
+        XposedBridge.log("[Ersatz] initZygote called, modulePath=" + startupParam.modulePath
+                + " / startsSystemServer=" + startupParam.startsSystemServer);
+    }
 
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) {
