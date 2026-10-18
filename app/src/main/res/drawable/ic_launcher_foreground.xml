@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 一个简单的 "A→B" 替换图标 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,40 L46,40 L52,52 L78,52 L74,40 L70,40 L68,34 L58,34 L54,48 L44,48 L48,34 L54,34 L52,28 L34,28 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M62,68 L76,68 L80,80 L62,80 Z" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="6"
+        android:strokeLineCap="round"
+        android:pathData="M40,74 L58,74 M52,68 L58,74 L52,80" />
+</vector>

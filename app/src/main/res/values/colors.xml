@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#FF3F51B5</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="text">#FF111111</color>
+    <color name="divider">#FFDDDDDD</color>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 全局作用域：
+         android 代表系统框架(需要勾选才能 hook 系统进程),
+         留空字符串表示允许用户手动勾选任意应用 -->
+    <string-array name="xposed_scope">
+        <item>android</item>
+    </string-array>
+</resources>
