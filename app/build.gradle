@@ -27,6 +27,8 @@ android {
 }
 
 dependencies {
-    compileOnly 'de.robv.android.xposed:api:82'
-    compileOnly 'de.robv.android.xposed:api:82:sources'
+    // 说明：de.robv.android.xposed:api:82 已从 JCenter/MavenCentral 下架，
+    // 无法在线解析。本工程改为在 src/main/java/de/robv/android/xposed/ 下
+    // 内置最小 stub 源码（仅编译期使用，运行时由 LSPosed 注入真实实现）。
+    // 因此这里不需要任何 Xposed 依赖。
 }
