@@ -28,6 +28,9 @@ public class MainHook implements IXposedHookLoadPackage {
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) {
         // 只处理有 android.widget.TextView 存在的进程（几乎全部），
         // 但跳过我们自己的模块进程，避免界面被替换。
+        XposedBridge.log("[Ersatz] handleLoadPackage: " + lpparam.packageName
+                + " / process=" + lpparam.processName);
+
         if ("com.ersatz".equals(lpparam.packageName)) {
             return;
         }

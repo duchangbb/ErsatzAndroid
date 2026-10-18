@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 全局作用域：
-         android 代表系统框架(需要勾选才能 hook 系统进程),
-         留空字符串表示允许用户手动勾选任意应用 -->
+    <!-- 推荐作用域：
+         android = 系统框架（状态栏/通知/系统UI）
+         system  = system 进程
+         其它 App 由用户在 LSPosed 里自行勾选 -->
     <string-array name="xposed_scope">
         <item>android</item>
+        <item>system</item>
     </string-array>
 </resources>
