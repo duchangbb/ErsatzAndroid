@@ -10,6 +10,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        // Xposed 官方仓库：de.robv.android.xposed:api:82 仍在此处提供
+        maven { url 'https://api.xposed.info/' }
     }
 }
 rootProject.name = "ErsatzAndroid"
