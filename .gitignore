@@ -12,3 +12,11 @@ captures/
 
 # 日志
 *.log
+
+# 签名密钥（绝对不能进 Git）
+*.jks
+*.keystore
+
+# 参考 APK 与打包产物（体积大，不入库）
+ref/
+*.apk
